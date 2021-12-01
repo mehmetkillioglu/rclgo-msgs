@@ -21,10 +21,10 @@ import (
 	
 )
 /*
-#cgo LDFLAGS: -L/opt/ros/foxy/lib -Wl,-rpath=/opt/ros/foxy/lib -lrcl -lrosidl_runtime_c -lrosidl_typesupport_c -lrcutils -lrmw_implementation
+#cgo LDFLAGS: -L/opt/ros/galactic/lib -Wl,-rpath=/opt/ros/galactic/lib -lrcl -lrosidl_runtime_c -lrosidl_typesupport_c -lrcutils -lrmw_implementation
 #cgo LDFLAGS: -lrcl_interfaces__rosidl_typesupport_c -lrcl_interfaces__rosidl_generator_c
 
-#cgo CFLAGS: -I/opt/ros/foxy/include
+#cgo CFLAGS: -I/opt/ros/galactic/include
 
 #include <rosidl_runtime_c/message_type_support_struct.h>
 
@@ -45,6 +45,7 @@ type ParameterDescriptor struct {
 	Description string `yaml:"description"`// Description of the parameter, visible from introspection tools.
 	AdditionalConstraints string `yaml:"additional_constraints"`// Plain English description of additional constraints which cannot be expressedwith the available constraints, e.g. "only prime numbers".By convention, this should only be used to clarify constraints which cannotbe completely expressed with the parameter constraints below.
 	ReadOnly bool `yaml:"read_only"`// If 'true' then the value cannot change after it has been initialized.
+	DynamicTyping bool `yaml:"dynamic_typing"`// If true, the parameter is allowed to change type.
 	FloatingPointRange []FloatingPointRange `yaml:"floating_point_range"`// FloatingPointRange consists of a from_value, a to_value, and a step.
 	IntegerRange []IntegerRange `yaml:"integer_range"`// IntegerRange consists of a from_value, a to_value, and a step.
 }
@@ -63,6 +64,7 @@ func (t *ParameterDescriptor) Clone() *ParameterDescriptor {
 	c.Description = t.Description
 	c.AdditionalConstraints = t.AdditionalConstraints
 	c.ReadOnly = t.ReadOnly
+	c.DynamicTyping = t.DynamicTyping
 	if t.FloatingPointRange != nil {
 		c.FloatingPointRange = make([]FloatingPointRange, len(t.FloatingPointRange))
 		CloneFloatingPointRangeSlice(c.FloatingPointRange, t.FloatingPointRange)
@@ -84,6 +86,7 @@ func (t *ParameterDescriptor) SetDefaults() {
 	t.Description = ""
 	t.AdditionalConstraints = ""
 	t.ReadOnly = false
+	t.DynamicTyping = false
 	t.FloatingPointRange = nil
 	t.IntegerRange = nil
 }
@@ -121,6 +124,7 @@ func (t _ParameterDescriptorTypeSupport) AsCStruct(dst unsafe.Pointer, msg types
 	primitives.StringAsCStruct(unsafe.Pointer(&mem.description), m.Description)
 	primitives.StringAsCStruct(unsafe.Pointer(&mem.additional_constraints), m.AdditionalConstraints)
 	mem.read_only = C.bool(m.ReadOnly)
+	mem.dynamic_typing = C.bool(m.DynamicTyping)
 	FloatingPointRange__Sequence_to_C(&mem.floating_point_range, m.FloatingPointRange)
 	IntegerRange__Sequence_to_C(&mem.integer_range, m.IntegerRange)
 }
@@ -133,6 +137,7 @@ func (t _ParameterDescriptorTypeSupport) AsGoStruct(msg types.Message, ros2_mess
 	primitives.StringAsGoStruct(&m.Description, unsafe.Pointer(&mem.description))
 	primitives.StringAsGoStruct(&m.AdditionalConstraints, unsafe.Pointer(&mem.additional_constraints))
 	m.ReadOnly = bool(mem.read_only)
+	m.DynamicTyping = bool(mem.dynamic_typing)
 	FloatingPointRange__Sequence_to_Go(&m.FloatingPointRange, mem.floating_point_range)
 	IntegerRange__Sequence_to_Go(&m.IntegerRange, mem.integer_range)
 }

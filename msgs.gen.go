@@ -23,8 +23,10 @@ import (
 	_ "github.com/tiiuae/rclgo-msgs/diagnostic_msgs/srv" //
 	_ "github.com/tiiuae/rclgo-msgs/example_interfaces/msg" //
 	_ "github.com/tiiuae/rclgo-msgs/example_interfaces/srv" //
-	_ "github.com/tiiuae/rclgo-msgs/fog_msgs/msg" //
-	_ "github.com/tiiuae/rclgo-msgs/fog_msgs/srv" //
+	_ "github.com/tiiuae/rclgo-msgs/gazebo_msgs/msg" //
+	_ "github.com/tiiuae/rclgo-msgs/gazebo_msgs/srv" //
+	_ "github.com/tiiuae/rclgo-msgs/geographic_msgs/msg" //
+	_ "github.com/tiiuae/rclgo-msgs/geographic_msgs/srv" //
 	_ "github.com/tiiuae/rclgo-msgs/geometry_msgs/msg" //
 	_ "github.com/tiiuae/rclgo-msgs/lifecycle_msgs/msg" //
 	_ "github.com/tiiuae/rclgo-msgs/lifecycle_msgs/srv" //
@@ -33,13 +35,15 @@ import (
 	_ "github.com/tiiuae/rclgo-msgs/map_msgs/srv" //
 	_ "github.com/tiiuae/rclgo-msgs/nav_msgs/msg" //
 	_ "github.com/tiiuae/rclgo-msgs/nav_msgs/srv" //
+	_ "github.com/tiiuae/rclgo-msgs/octomap_msgs/msg" //
+	_ "github.com/tiiuae/rclgo-msgs/octomap_msgs/srv" //
 	_ "github.com/tiiuae/rclgo-msgs/pcl_msgs/msg" //
 	_ "github.com/tiiuae/rclgo-msgs/pcl_msgs/srv" //
 	_ "github.com/tiiuae/rclgo-msgs/pendulum_msgs/msg" //
-	_ "github.com/tiiuae/rclgo-msgs/px4_msgs/msg" //
 	_ "github.com/tiiuae/rclgo-msgs/rcl_interfaces/msg" //
 	_ "github.com/tiiuae/rclgo-msgs/rcl_interfaces/srv" //
 	_ "github.com/tiiuae/rclgo-msgs/rmw_dds_common/msg" //
+	_ "github.com/tiiuae/rclgo-msgs/rosbag2_interfaces/srv" //
 	_ "github.com/tiiuae/rclgo-msgs/rosgraph_msgs/msg" //
 	_ "github.com/tiiuae/rclgo-msgs/sensor_msgs/msg" //
 	_ "github.com/tiiuae/rclgo-msgs/sensor_msgs/srv" //
@@ -48,8 +52,6 @@ import (
 	_ "github.com/tiiuae/rclgo-msgs/std_msgs/msg" //
 	_ "github.com/tiiuae/rclgo-msgs/std_srvs/srv" //
 	_ "github.com/tiiuae/rclgo-msgs/stereo_msgs/msg" //
-	_ "github.com/tiiuae/rclgo-msgs/test_msgs/msg" //
-	_ "github.com/tiiuae/rclgo-msgs/test_msgs/srv" //
 	_ "github.com/tiiuae/rclgo-msgs/tf2_msgs/msg" //
 	_ "github.com/tiiuae/rclgo-msgs/tf2_msgs/srv" //
 	_ "github.com/tiiuae/rclgo-msgs/trajectory_msgs/msg" //
