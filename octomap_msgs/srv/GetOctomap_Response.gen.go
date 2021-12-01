@@ -17,7 +17,7 @@ import (
 
 	"github.com/tiiuae/rclgo/pkg/rclgo/types"
 	"github.com/tiiuae/rclgo/pkg/rclgo/typemap"
-	octomap_msgs_msg "github.com/tiiuae/rclgo-msgs/octomap_msgs/msg"
+	octomap_msgs_msg "github.com/mehmetkillioglu/rclgo-msgs/octomap_msgs/msg"
 	
 )
 /*

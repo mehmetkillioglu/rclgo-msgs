@@ -17,7 +17,7 @@ import (
 
 	"github.com/tiiuae/rclgo/pkg/rclgo/types"
 	"github.com/tiiuae/rclgo/pkg/rclgo/typemap"
-	gazebo_msgs_msg "github.com/tiiuae/rclgo-msgs/gazebo_msgs/msg"
+	gazebo_msgs_msg "github.com/mehmetkillioglu/rclgo-msgs/gazebo_msgs/msg"
 	
 )
 /*

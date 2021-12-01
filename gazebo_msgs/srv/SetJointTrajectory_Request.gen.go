@@ -17,8 +17,8 @@ import (
 
 	"github.com/tiiuae/rclgo/pkg/rclgo/types"
 	"github.com/tiiuae/rclgo/pkg/rclgo/typemap"
-	geometry_msgs_msg "github.com/tiiuae/rclgo-msgs/geometry_msgs/msg"
-	trajectory_msgs_msg "github.com/tiiuae/rclgo-msgs/trajectory_msgs/msg"
+	geometry_msgs_msg "github.com/mehmetkillioglu/rclgo-msgs/geometry_msgs/msg"
+	trajectory_msgs_msg "github.com/mehmetkillioglu/rclgo-msgs/trajectory_msgs/msg"
 	primitives "github.com/tiiuae/rclgo/pkg/rclgo/primitives"
 	
 )
