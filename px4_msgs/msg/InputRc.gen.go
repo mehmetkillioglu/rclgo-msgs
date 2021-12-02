@@ -21,10 +21,10 @@ import (
 	
 )
 /*
-#cgo LDFLAGS: -L/opt/ros/foxy/lib -Wl,-rpath=/opt/ros/foxy/lib -lrcl -lrosidl_runtime_c -lrosidl_typesupport_c -lrcutils -lrmw_implementation
+#cgo LDFLAGS: -L/opt/ros/galactic/lib -Wl,-rpath=/opt/ros/galactic/lib -lrcl -lrosidl_runtime_c -lrosidl_typesupport_c -lrcutils -lrmw_implementation
 #cgo LDFLAGS: -lpx4_msgs__rosidl_typesupport_c -lpx4_msgs__rosidl_generator_c
 
-#cgo CFLAGS: -I/opt/ros/foxy/include
+#cgo CFLAGS: -I/opt/ros/galactic/include
 
 #include <rosidl_runtime_c/message_type_support_struct.h>
 
@@ -54,7 +54,6 @@ const (
 	InputRc_RC_INPUT_SOURCE_PX4FMU_CRSF uint8 = 14
 	InputRc_RC_INPUT_SOURCE_PX4FMU_GHST uint8 = 15
 	InputRc_RC_INPUT_MAX_CHANNELS uint8 = 18// Maximum number of R/C input channels in the system. S.Bus has up to 18 channels.
-	InputRc_RSSI_MAX int8 = 100
 )
 
 // Do not create instances of this type directly. Always use NewInputRc

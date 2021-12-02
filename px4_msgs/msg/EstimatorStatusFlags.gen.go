@@ -20,10 +20,10 @@ import (
 	
 )
 /*
-#cgo LDFLAGS: -L/opt/ros/foxy/lib -Wl,-rpath=/opt/ros/foxy/lib -lrcl -lrosidl_runtime_c -lrosidl_typesupport_c -lrcutils -lrmw_implementation
+#cgo LDFLAGS: -L/opt/ros/galactic/lib -Wl,-rpath=/opt/ros/galactic/lib -lrcl -lrosidl_runtime_c -lrosidl_typesupport_c -lrcutils -lrmw_implementation
 #cgo LDFLAGS: -lpx4_msgs__rosidl_typesupport_c -lpx4_msgs__rosidl_generator_c
 
-#cgo CFLAGS: -I/opt/ros/foxy/include
+#cgo CFLAGS: -I/opt/ros/galactic/include
 
 #include <rosidl_runtime_c/message_type_support_struct.h>
 
@@ -69,7 +69,6 @@ type EstimatorStatusFlags struct {
 	CsEvVel bool `yaml:"cs_ev_vel"`// 24 - true when local frame velocity data fusion from external vision measurements is intended. filter control status
 	CsSyntheticMagZ bool `yaml:"cs_synthetic_mag_z"`// 25 - true when we are using a synthesized measurement for the magnetometer Z component. filter control status
 	CsVehicleAtRest bool `yaml:"cs_vehicle_at_rest"`// 26 - true when the vehicle is at rest. filter control status
-	CsGpsYawFault bool `yaml:"cs_gps_yaw_fault"`// 27 - true when the GNSS heading has been declared faulty and is no longer being used. filter control status
 	FaultStatusChanges uint32 `yaml:"fault_status_changes"`// number of filter fault status (fs) changes. fault status
 	FsBadMagX bool `yaml:"fs_bad_mag_x"`// 0 - true if the fusion of the magnetometer X-axis has encountered a numerical error. fault status
 	FsBadMagY bool `yaml:"fs_bad_mag_y"`// 1 - true if the fusion of the magnetometer Y-axis has encountered a numerical error. fault status
@@ -144,7 +143,6 @@ func (t *EstimatorStatusFlags) Clone() *EstimatorStatusFlags {
 	c.CsEvVel = t.CsEvVel
 	c.CsSyntheticMagZ = t.CsSyntheticMagZ
 	c.CsVehicleAtRest = t.CsVehicleAtRest
-	c.CsGpsYawFault = t.CsGpsYawFault
 	c.FaultStatusChanges = t.FaultStatusChanges
 	c.FsBadMagX = t.FsBadMagX
 	c.FsBadMagY = t.FsBadMagY
@@ -216,7 +214,6 @@ func (t *EstimatorStatusFlags) SetDefaults() {
 	t.CsEvVel = false
 	t.CsSyntheticMagZ = false
 	t.CsVehicleAtRest = false
-	t.CsGpsYawFault = false
 	t.FaultStatusChanges = 0
 	t.FsBadMagX = false
 	t.FsBadMagY = false
@@ -310,7 +307,6 @@ func (t _EstimatorStatusFlagsTypeSupport) AsCStruct(dst unsafe.Pointer, msg type
 	mem.cs_ev_vel = C.bool(m.CsEvVel)
 	mem.cs_synthetic_mag_z = C.bool(m.CsSyntheticMagZ)
 	mem.cs_vehicle_at_rest = C.bool(m.CsVehicleAtRest)
-	mem.cs_gps_yaw_fault = C.bool(m.CsGpsYawFault)
 	mem.fault_status_changes = C.uint32_t(m.FaultStatusChanges)
 	mem.fs_bad_mag_x = C.bool(m.FsBadMagX)
 	mem.fs_bad_mag_y = C.bool(m.FsBadMagY)
@@ -379,7 +375,6 @@ func (t _EstimatorStatusFlagsTypeSupport) AsGoStruct(msg types.Message, ros2_mes
 	m.CsEvVel = bool(mem.cs_ev_vel)
 	m.CsSyntheticMagZ = bool(mem.cs_synthetic_mag_z)
 	m.CsVehicleAtRest = bool(mem.cs_vehicle_at_rest)
-	m.CsGpsYawFault = bool(mem.cs_gps_yaw_fault)
 	m.FaultStatusChanges = uint32(mem.fault_status_changes)
 	m.FsBadMagX = bool(mem.fs_bad_mag_x)
 	m.FsBadMagY = bool(mem.fs_bad_mag_y)

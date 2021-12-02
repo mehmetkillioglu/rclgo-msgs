@@ -20,10 +20,10 @@ import (
 	
 )
 /*
-#cgo LDFLAGS: -L/opt/ros/foxy/lib -Wl,-rpath=/opt/ros/foxy/lib -lrcl -lrosidl_runtime_c -lrosidl_typesupport_c -lrcutils -lrmw_implementation
+#cgo LDFLAGS: -L/opt/ros/galactic/lib -Wl,-rpath=/opt/ros/galactic/lib -lrcl -lrosidl_runtime_c -lrosidl_typesupport_c -lrcutils -lrmw_implementation
 #cgo LDFLAGS: -lpx4_msgs__rosidl_typesupport_c -lpx4_msgs__rosidl_generator_c
 
-#cgo CFLAGS: -I/opt/ros/foxy/include
+#cgo CFLAGS: -I/opt/ros/galactic/include
 
 #include <rosidl_runtime_c/message_type_support_struct.h>
 
@@ -40,7 +40,6 @@ func init() {
 // function instead.
 type SensorGps struct {
 	Timestamp uint64 `yaml:"timestamp"`// time since system start (microseconds). GPS position in WGS84 coordinates.the field 'timestamp' is for the position & velocity (microseconds)
-	DeviceId uint32 `yaml:"device_id"`// unique device ID for the sensor that does not change between power cycles
 	Lat int32 `yaml:"lat"`// Latitude in 1E-7 degrees
 	Lon int32 `yaml:"lon"`// Longitude in 1E-7 degrees
 	Alt int32 `yaml:"alt"`// Altitude in 1E-3 meters above MSL, (millimetres)
@@ -79,7 +78,6 @@ func NewSensorGps() *SensorGps {
 func (t *SensorGps) Clone() *SensorGps {
 	c := &SensorGps{}
 	c.Timestamp = t.Timestamp
-	c.DeviceId = t.DeviceId
 	c.Lat = t.Lat
 	c.Lon = t.Lon
 	c.Alt = t.Alt
@@ -115,7 +113,6 @@ func (t *SensorGps) CloneMsg() types.Message {
 
 func (t *SensorGps) SetDefaults() {
 	t.Timestamp = 0
-	t.DeviceId = 0
 	t.Lat = 0
 	t.Lon = 0
 	t.Alt = 0
@@ -173,7 +170,6 @@ func (t _SensorGpsTypeSupport) AsCStruct(dst unsafe.Pointer, msg types.Message) 
 	m := msg.(*SensorGps)
 	mem := (*C.px4_msgs__msg__SensorGps)(dst)
 	mem.timestamp = C.uint64_t(m.Timestamp)
-	mem.device_id = C.uint32_t(m.DeviceId)
 	mem.lat = C.int32_t(m.Lat)
 	mem.lon = C.int32_t(m.Lon)
 	mem.alt = C.int32_t(m.Alt)
@@ -206,7 +202,6 @@ func (t _SensorGpsTypeSupport) AsGoStruct(msg types.Message, ros2_message_buffer
 	m := msg.(*SensorGps)
 	mem := (*C.px4_msgs__msg__SensorGps)(ros2_message_buffer)
 	m.Timestamp = uint64(mem.timestamp)
-	m.DeviceId = uint32(mem.device_id)
 	m.Lat = int32(mem.lat)
 	m.Lon = int32(mem.lon)
 	m.Alt = int32(mem.alt)

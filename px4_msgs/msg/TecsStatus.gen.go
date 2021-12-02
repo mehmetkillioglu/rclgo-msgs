@@ -20,10 +20,10 @@ import (
 	
 )
 /*
-#cgo LDFLAGS: -L/opt/ros/foxy/lib -Wl,-rpath=/opt/ros/foxy/lib -lrcl -lrosidl_runtime_c -lrosidl_typesupport_c -lrcutils -lrmw_implementation
+#cgo LDFLAGS: -L/opt/ros/galactic/lib -Wl,-rpath=/opt/ros/galactic/lib -lrcl -lrosidl_runtime_c -lrosidl_typesupport_c -lrcutils -lrmw_implementation
 #cgo LDFLAGS: -lpx4_msgs__rosidl_typesupport_c -lpx4_msgs__rosidl_generator_c
 
-#cgo CFLAGS: -I/opt/ros/foxy/include
+#cgo CFLAGS: -I/opt/ros/galactic/include
 
 #include <rosidl_runtime_c/message_type_support_struct.h>
 
@@ -58,8 +58,6 @@ type TecsStatus struct {
 	TrueAirspeedFiltered float32 `yaml:"true_airspeed_filtered"`
 	TrueAirspeedDerivativeSp float32 `yaml:"true_airspeed_derivative_sp"`
 	TrueAirspeedDerivative float32 `yaml:"true_airspeed_derivative"`
-	TrueAirspeedDerivativeRaw float32 `yaml:"true_airspeed_derivative_raw"`
-	TrueAirspeedInnovation float32 `yaml:"true_airspeed_innovation"`
 	TotalEnergyError float32 `yaml:"total_energy_error"`
 	EnergyDistributionError float32 `yaml:"energy_distribution_error"`
 	TotalEnergyRateError float32 `yaml:"total_energy_rate_error"`
@@ -75,7 +73,6 @@ type TecsStatus struct {
 	ThrottleInteg float32 `yaml:"throttle_integ"`
 	PitchInteg float32 `yaml:"pitch_integ"`
 	ThrottleSp float32 `yaml:"throttle_sp"`
-	PitchSpRad float32 `yaml:"pitch_sp_rad"`
 	Mode uint8 `yaml:"mode"`
 }
 
@@ -98,8 +95,6 @@ func (t *TecsStatus) Clone() *TecsStatus {
 	c.TrueAirspeedFiltered = t.TrueAirspeedFiltered
 	c.TrueAirspeedDerivativeSp = t.TrueAirspeedDerivativeSp
 	c.TrueAirspeedDerivative = t.TrueAirspeedDerivative
-	c.TrueAirspeedDerivativeRaw = t.TrueAirspeedDerivativeRaw
-	c.TrueAirspeedInnovation = t.TrueAirspeedInnovation
 	c.TotalEnergyError = t.TotalEnergyError
 	c.EnergyDistributionError = t.EnergyDistributionError
 	c.TotalEnergyRateError = t.TotalEnergyRateError
@@ -115,7 +110,6 @@ func (t *TecsStatus) Clone() *TecsStatus {
 	c.ThrottleInteg = t.ThrottleInteg
 	c.PitchInteg = t.PitchInteg
 	c.ThrottleSp = t.ThrottleSp
-	c.PitchSpRad = t.PitchSpRad
 	c.Mode = t.Mode
 	return c
 }
@@ -135,8 +129,6 @@ func (t *TecsStatus) SetDefaults() {
 	t.TrueAirspeedFiltered = 0
 	t.TrueAirspeedDerivativeSp = 0
 	t.TrueAirspeedDerivative = 0
-	t.TrueAirspeedDerivativeRaw = 0
-	t.TrueAirspeedInnovation = 0
 	t.TotalEnergyError = 0
 	t.EnergyDistributionError = 0
 	t.TotalEnergyRateError = 0
@@ -152,7 +144,6 @@ func (t *TecsStatus) SetDefaults() {
 	t.ThrottleInteg = 0
 	t.PitchInteg = 0
 	t.ThrottleSp = 0
-	t.PitchSpRad = 0
 	t.Mode = 0
 }
 
@@ -194,8 +185,6 @@ func (t _TecsStatusTypeSupport) AsCStruct(dst unsafe.Pointer, msg types.Message)
 	mem.true_airspeed_filtered = C.float(m.TrueAirspeedFiltered)
 	mem.true_airspeed_derivative_sp = C.float(m.TrueAirspeedDerivativeSp)
 	mem.true_airspeed_derivative = C.float(m.TrueAirspeedDerivative)
-	mem.true_airspeed_derivative_raw = C.float(m.TrueAirspeedDerivativeRaw)
-	mem.true_airspeed_innovation = C.float(m.TrueAirspeedInnovation)
 	mem.total_energy_error = C.float(m.TotalEnergyError)
 	mem.energy_distribution_error = C.float(m.EnergyDistributionError)
 	mem.total_energy_rate_error = C.float(m.TotalEnergyRateError)
@@ -211,7 +200,6 @@ func (t _TecsStatusTypeSupport) AsCStruct(dst unsafe.Pointer, msg types.Message)
 	mem.throttle_integ = C.float(m.ThrottleInteg)
 	mem.pitch_integ = C.float(m.PitchInteg)
 	mem.throttle_sp = C.float(m.ThrottleSp)
-	mem.pitch_sp_rad = C.float(m.PitchSpRad)
 	mem.mode = C.uint8_t(m.Mode)
 }
 
@@ -228,8 +216,6 @@ func (t _TecsStatusTypeSupport) AsGoStruct(msg types.Message, ros2_message_buffe
 	m.TrueAirspeedFiltered = float32(mem.true_airspeed_filtered)
 	m.TrueAirspeedDerivativeSp = float32(mem.true_airspeed_derivative_sp)
 	m.TrueAirspeedDerivative = float32(mem.true_airspeed_derivative)
-	m.TrueAirspeedDerivativeRaw = float32(mem.true_airspeed_derivative_raw)
-	m.TrueAirspeedInnovation = float32(mem.true_airspeed_innovation)
 	m.TotalEnergyError = float32(mem.total_energy_error)
 	m.EnergyDistributionError = float32(mem.energy_distribution_error)
 	m.TotalEnergyRateError = float32(mem.total_energy_rate_error)
@@ -245,7 +231,6 @@ func (t _TecsStatusTypeSupport) AsGoStruct(msg types.Message, ros2_message_buffe
 	m.ThrottleInteg = float32(mem.throttle_integ)
 	m.PitchInteg = float32(mem.pitch_integ)
 	m.ThrottleSp = float32(mem.throttle_sp)
-	m.PitchSpRad = float32(mem.pitch_sp_rad)
 	m.Mode = uint8(mem.mode)
 }
 

@@ -20,10 +20,10 @@ import (
 	
 )
 /*
-#cgo LDFLAGS: -L/opt/ros/foxy/lib -Wl,-rpath=/opt/ros/foxy/lib -lrcl -lrosidl_runtime_c -lrosidl_typesupport_c -lrcutils -lrmw_implementation
+#cgo LDFLAGS: -L/opt/ros/galactic/lib -Wl,-rpath=/opt/ros/galactic/lib -lrcl -lrosidl_runtime_c -lrosidl_typesupport_c -lrcutils -lrmw_implementation
 #cgo LDFLAGS: -lpx4_msgs__rosidl_typesupport_c -lpx4_msgs__rosidl_generator_c
 
-#cgo CFLAGS: -I/opt/ros/foxy/include
+#cgo CFLAGS: -I/opt/ros/galactic/include
 
 #include <rosidl_runtime_c/message_type_support_struct.h>
 
@@ -46,7 +46,6 @@ type HeaterStatus struct {
 	Timestamp uint64 `yaml:"timestamp"`// time since system start (microseconds)
 	DeviceId uint32 `yaml:"device_id"`
 	HeaterOn bool `yaml:"heater_on"`
-	TemperatureTargetMet bool `yaml:"temperature_target_met"`
 	TemperatureSensor float32 `yaml:"temperature_sensor"`
 	TemperatureTarget float32 `yaml:"temperature_target"`
 	ControllerPeriodUsec uint32 `yaml:"controller_period_usec"`
@@ -69,7 +68,6 @@ func (t *HeaterStatus) Clone() *HeaterStatus {
 	c.Timestamp = t.Timestamp
 	c.DeviceId = t.DeviceId
 	c.HeaterOn = t.HeaterOn
-	c.TemperatureTargetMet = t.TemperatureTargetMet
 	c.TemperatureSensor = t.TemperatureSensor
 	c.TemperatureTarget = t.TemperatureTarget
 	c.ControllerPeriodUsec = t.ControllerPeriodUsec
@@ -89,7 +87,6 @@ func (t *HeaterStatus) SetDefaults() {
 	t.Timestamp = 0
 	t.DeviceId = 0
 	t.HeaterOn = false
-	t.TemperatureTargetMet = false
 	t.TemperatureSensor = 0
 	t.TemperatureTarget = 0
 	t.ControllerPeriodUsec = 0
@@ -131,7 +128,6 @@ func (t _HeaterStatusTypeSupport) AsCStruct(dst unsafe.Pointer, msg types.Messag
 	mem.timestamp = C.uint64_t(m.Timestamp)
 	mem.device_id = C.uint32_t(m.DeviceId)
 	mem.heater_on = C.bool(m.HeaterOn)
-	mem.temperature_target_met = C.bool(m.TemperatureTargetMet)
 	mem.temperature_sensor = C.float(m.TemperatureSensor)
 	mem.temperature_target = C.float(m.TemperatureTarget)
 	mem.controller_period_usec = C.uint32_t(m.ControllerPeriodUsec)
@@ -148,7 +144,6 @@ func (t _HeaterStatusTypeSupport) AsGoStruct(msg types.Message, ros2_message_buf
 	m.Timestamp = uint64(mem.timestamp)
 	m.DeviceId = uint32(mem.device_id)
 	m.HeaterOn = bool(mem.heater_on)
-	m.TemperatureTargetMet = bool(mem.temperature_target_met)
 	m.TemperatureSensor = float32(mem.temperature_sensor)
 	m.TemperatureTarget = float32(mem.temperature_target)
 	m.ControllerPeriodUsec = uint32(mem.controller_period_usec)

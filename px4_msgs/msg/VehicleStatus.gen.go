@@ -20,10 +20,10 @@ import (
 	
 )
 /*
-#cgo LDFLAGS: -L/opt/ros/foxy/lib -Wl,-rpath=/opt/ros/foxy/lib -lrcl -lrosidl_runtime_c -lrosidl_typesupport_c -lrcutils -lrmw_implementation
+#cgo LDFLAGS: -L/opt/ros/galactic/lib -Wl,-rpath=/opt/ros/galactic/lib -lrcl -lrosidl_runtime_c -lrosidl_typesupport_c -lrcutils -lrmw_implementation
 #cgo LDFLAGS: -lpx4_msgs__rosidl_typesupport_c -lpx4_msgs__rosidl_generator_c
 
-#cgo CFLAGS: -I/opt/ros/foxy/include
+#cgo CFLAGS: -I/opt/ros/galactic/include
 
 #include <rosidl_runtime_c/message_type_support_struct.h>
 
@@ -122,7 +122,6 @@ type VehicleStatus struct {
 	HighLatencyDataLinkLost bool `yaml:"high_latency_data_link_lost"`// Set to true if the high latency data link (eg. RockBlock Iridium 9603 telemetry module) is lost
 	EngineFailure bool `yaml:"engine_failure"`// Set to true if an engine failure is detected
 	MissionFailure bool `yaml:"mission_failure"`// Set to true if mission could not continue/finish
-	GeofenceViolated bool `yaml:"geofence_violated"`
 	FailureDetectorStatus uint8 `yaml:"failure_detector_status"`// Bitmask containing FailureDetector status [0, 0, 0, 0, 0, FAILURE_ALT, FAILURE_PITCH, FAILURE_ROLL]
 	OnboardControlSensorsPresent uint32 `yaml:"onboard_control_sensors_present"`// see SYS_STATUS mavlink message for the following
 	OnboardControlSensorsEnabled uint32 `yaml:"onboard_control_sensors_enabled"`// see SYS_STATUS mavlink message for the following
@@ -165,7 +164,6 @@ func (t *VehicleStatus) Clone() *VehicleStatus {
 	c.HighLatencyDataLinkLost = t.HighLatencyDataLinkLost
 	c.EngineFailure = t.EngineFailure
 	c.MissionFailure = t.MissionFailure
-	c.GeofenceViolated = t.GeofenceViolated
 	c.FailureDetectorStatus = t.FailureDetectorStatus
 	c.OnboardControlSensorsPresent = t.OnboardControlSensorsPresent
 	c.OnboardControlSensorsEnabled = t.OnboardControlSensorsEnabled
@@ -205,7 +203,6 @@ func (t *VehicleStatus) SetDefaults() {
 	t.HighLatencyDataLinkLost = false
 	t.EngineFailure = false
 	t.MissionFailure = false
-	t.GeofenceViolated = false
 	t.FailureDetectorStatus = 0
 	t.OnboardControlSensorsPresent = 0
 	t.OnboardControlSensorsEnabled = 0
@@ -267,7 +264,6 @@ func (t _VehicleStatusTypeSupport) AsCStruct(dst unsafe.Pointer, msg types.Messa
 	mem.high_latency_data_link_lost = C.bool(m.HighLatencyDataLinkLost)
 	mem.engine_failure = C.bool(m.EngineFailure)
 	mem.mission_failure = C.bool(m.MissionFailure)
-	mem.geofence_violated = C.bool(m.GeofenceViolated)
 	mem.failure_detector_status = C.uint8_t(m.FailureDetectorStatus)
 	mem.onboard_control_sensors_present = C.uint32_t(m.OnboardControlSensorsPresent)
 	mem.onboard_control_sensors_enabled = C.uint32_t(m.OnboardControlSensorsEnabled)
@@ -304,7 +300,6 @@ func (t _VehicleStatusTypeSupport) AsGoStruct(msg types.Message, ros2_message_bu
 	m.HighLatencyDataLinkLost = bool(mem.high_latency_data_link_lost)
 	m.EngineFailure = bool(mem.engine_failure)
 	m.MissionFailure = bool(mem.mission_failure)
-	m.GeofenceViolated = bool(mem.geofence_violated)
 	m.FailureDetectorStatus = uint8(mem.failure_detector_status)
 	m.OnboardControlSensorsPresent = uint32(mem.onboard_control_sensors_present)
 	m.OnboardControlSensorsEnabled = uint32(mem.onboard_control_sensors_enabled)

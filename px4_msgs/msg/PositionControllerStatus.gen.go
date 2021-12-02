@@ -20,10 +20,10 @@ import (
 	
 )
 /*
-#cgo LDFLAGS: -L/opt/ros/foxy/lib -Wl,-rpath=/opt/ros/foxy/lib -lrcl -lrosidl_runtime_c -lrosidl_typesupport_c -lrcutils -lrmw_implementation
+#cgo LDFLAGS: -L/opt/ros/galactic/lib -Wl,-rpath=/opt/ros/galactic/lib -lrcl -lrosidl_runtime_c -lrosidl_typesupport_c -lrcutils -lrmw_implementation
 #cgo LDFLAGS: -lpx4_msgs__rosidl_typesupport_c -lpx4_msgs__rosidl_generator_c
 
-#cgo CFLAGS: -I/opt/ros/foxy/include
+#cgo CFLAGS: -I/opt/ros/galactic/include
 
 #include <rosidl_runtime_c/message_type_support_struct.h>
 
@@ -42,9 +42,9 @@ type PositionControllerStatus struct {
 	Timestamp uint64 `yaml:"timestamp"`// time since system start (microseconds)
 	NavRoll float32 `yaml:"nav_roll"`
 	NavPitch float32 `yaml:"nav_pitch"`
-	NavBearing float32 `yaml:"nav_bearing"`// set to NAN if not valid
-	TargetBearing float32 `yaml:"target_bearing"`// set to NAN if not valid
-	XtrackError float32 `yaml:"xtrack_error"`// set to NAN if not valid
+	NavBearing float32 `yaml:"nav_bearing"`
+	TargetBearing float32 `yaml:"target_bearing"`
+	XtrackError float32 `yaml:"xtrack_error"`
 	WpDist float32 `yaml:"wp_dist"`
 	AcceptanceRadius float32 `yaml:"acceptance_radius"`// the optimal distance to a waypoint to switch to the next
 	YawAcceptance float32 `yaml:"yaw_acceptance"`// NaN if not set

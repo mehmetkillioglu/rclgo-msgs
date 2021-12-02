@@ -20,10 +20,10 @@ import (
 	
 )
 /*
-#cgo LDFLAGS: -L/opt/ros/foxy/lib -Wl,-rpath=/opt/ros/foxy/lib -lrcl -lrosidl_runtime_c -lrosidl_typesupport_c -lrcutils -lrmw_implementation
+#cgo LDFLAGS: -L/opt/ros/galactic/lib -Wl,-rpath=/opt/ros/galactic/lib -lrcl -lrosidl_runtime_c -lrosidl_typesupport_c -lrcutils -lrmw_implementation
 #cgo LDFLAGS: -lpx4_msgs__rosidl_typesupport_c -lpx4_msgs__rosidl_generator_c
 
-#cgo CFLAGS: -I/opt/ros/foxy/include
+#cgo CFLAGS: -I/opt/ros/galactic/include
 
 #include <rosidl_runtime_c/message_type_support_struct.h>
 
@@ -58,7 +58,6 @@ const (
 type CommanderState struct {
 	Timestamp uint64 `yaml:"timestamp"`// time since system start (microseconds). Main state, i.e. what user wants. Controlled by RC or from ground station via telemetry link.
 	MainState uint8 `yaml:"main_state"`// main state machine
-	MainStateChanges uint16 `yaml:"main_state_changes"`
 }
 
 // NewCommanderState creates a new CommanderState with default values.
@@ -72,7 +71,6 @@ func (t *CommanderState) Clone() *CommanderState {
 	c := &CommanderState{}
 	c.Timestamp = t.Timestamp
 	c.MainState = t.MainState
-	c.MainStateChanges = t.MainStateChanges
 	return c
 }
 
@@ -83,7 +81,6 @@ func (t *CommanderState) CloneMsg() types.Message {
 func (t *CommanderState) SetDefaults() {
 	t.Timestamp = 0
 	t.MainState = 0
-	t.MainStateChanges = 0
 }
 
 // CloneCommanderStateSlice clones src to dst by calling Clone for each element in
@@ -116,7 +113,6 @@ func (t _CommanderStateTypeSupport) AsCStruct(dst unsafe.Pointer, msg types.Mess
 	mem := (*C.px4_msgs__msg__CommanderState)(dst)
 	mem.timestamp = C.uint64_t(m.Timestamp)
 	mem.main_state = C.uint8_t(m.MainState)
-	mem.main_state_changes = C.uint16_t(m.MainStateChanges)
 }
 
 func (t _CommanderStateTypeSupport) AsGoStruct(msg types.Message, ros2_message_buffer unsafe.Pointer) {
@@ -124,7 +120,6 @@ func (t _CommanderStateTypeSupport) AsGoStruct(msg types.Message, ros2_message_b
 	mem := (*C.px4_msgs__msg__CommanderState)(ros2_message_buffer)
 	m.Timestamp = uint64(mem.timestamp)
 	m.MainState = uint8(mem.main_state)
-	m.MainStateChanges = uint16(mem.main_state_changes)
 }
 
 func (t _CommanderStateTypeSupport) TypeSupport() unsafe.Pointer {

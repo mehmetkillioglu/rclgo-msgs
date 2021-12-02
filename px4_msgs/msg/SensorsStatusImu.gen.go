@@ -21,10 +21,10 @@ import (
 	
 )
 /*
-#cgo LDFLAGS: -L/opt/ros/foxy/lib -Wl,-rpath=/opt/ros/foxy/lib -lrcl -lrosidl_runtime_c -lrosidl_typesupport_c -lrcutils -lrmw_implementation
+#cgo LDFLAGS: -L/opt/ros/galactic/lib -Wl,-rpath=/opt/ros/galactic/lib -lrcl -lrosidl_runtime_c -lrosidl_typesupport_c -lrcutils -lrmw_implementation
 #cgo LDFLAGS: -lpx4_msgs__rosidl_typesupport_c -lpx4_msgs__rosidl_generator_c
 
-#cgo CFLAGS: -I/opt/ros/foxy/include
+#cgo CFLAGS: -I/opt/ros/galactic/include
 
 #include <rosidl_runtime_c/message_type_support_struct.h>
 
@@ -45,12 +45,10 @@ type SensorsStatusImu struct {
 	AccelDeviceIds [4]uint32 `yaml:"accel_device_ids"`
 	AccelInconsistencyMSS [4]float32 `yaml:"accel_inconsistency_m_s_s"`// magnitude of acceleration difference between IMU instance and mean in m/s^2.
 	AccelHealthy [4]bool `yaml:"accel_healthy"`
-	AccelPriority [4]uint8 `yaml:"accel_priority"`
 	GyroDeviceIdPrimary uint32 `yaml:"gyro_device_id_primary"`// current primary gyro device id for reference
 	GyroDeviceIds [4]uint32 `yaml:"gyro_device_ids"`
 	GyroInconsistencyRadS [4]float32 `yaml:"gyro_inconsistency_rad_s"`// magnitude of angular rate difference between IMU instance and mean in (rad/s).
 	GyroHealthy [4]bool `yaml:"gyro_healthy"`
-	GyroPriority [4]uint8 `yaml:"gyro_priority"`
 }
 
 // NewSensorsStatusImu creates a new SensorsStatusImu with default values.
@@ -67,12 +65,10 @@ func (t *SensorsStatusImu) Clone() *SensorsStatusImu {
 	c.AccelDeviceIds = t.AccelDeviceIds
 	c.AccelInconsistencyMSS = t.AccelInconsistencyMSS
 	c.AccelHealthy = t.AccelHealthy
-	c.AccelPriority = t.AccelPriority
 	c.GyroDeviceIdPrimary = t.GyroDeviceIdPrimary
 	c.GyroDeviceIds = t.GyroDeviceIds
 	c.GyroInconsistencyRadS = t.GyroInconsistencyRadS
 	c.GyroHealthy = t.GyroHealthy
-	c.GyroPriority = t.GyroPriority
 	return c
 }
 
@@ -86,12 +82,10 @@ func (t *SensorsStatusImu) SetDefaults() {
 	t.AccelDeviceIds = [4]uint32{}
 	t.AccelInconsistencyMSS = [4]float32{}
 	t.AccelHealthy = [4]bool{}
-	t.AccelPriority = [4]uint8{}
 	t.GyroDeviceIdPrimary = 0
 	t.GyroDeviceIds = [4]uint32{}
 	t.GyroInconsistencyRadS = [4]float32{}
 	t.GyroHealthy = [4]bool{}
-	t.GyroPriority = [4]uint8{}
 }
 
 // CloneSensorsStatusImuSlice clones src to dst by calling Clone for each element in
@@ -130,8 +124,6 @@ func (t _SensorsStatusImuTypeSupport) AsCStruct(dst unsafe.Pointer, msg types.Me
 	primitives.Float32__Array_to_C(*(*[]primitives.CFloat32)(unsafe.Pointer(&cSlice_accel_inconsistency_m_s_s)), m.AccelInconsistencyMSS[:])
 	cSlice_accel_healthy := mem.accel_healthy[:]
 	primitives.Bool__Array_to_C(*(*[]primitives.CBool)(unsafe.Pointer(&cSlice_accel_healthy)), m.AccelHealthy[:])
-	cSlice_accel_priority := mem.accel_priority[:]
-	primitives.Uint8__Array_to_C(*(*[]primitives.CUint8)(unsafe.Pointer(&cSlice_accel_priority)), m.AccelPriority[:])
 	mem.gyro_device_id_primary = C.uint32_t(m.GyroDeviceIdPrimary)
 	cSlice_gyro_device_ids := mem.gyro_device_ids[:]
 	primitives.Uint32__Array_to_C(*(*[]primitives.CUint32)(unsafe.Pointer(&cSlice_gyro_device_ids)), m.GyroDeviceIds[:])
@@ -139,8 +131,6 @@ func (t _SensorsStatusImuTypeSupport) AsCStruct(dst unsafe.Pointer, msg types.Me
 	primitives.Float32__Array_to_C(*(*[]primitives.CFloat32)(unsafe.Pointer(&cSlice_gyro_inconsistency_rad_s)), m.GyroInconsistencyRadS[:])
 	cSlice_gyro_healthy := mem.gyro_healthy[:]
 	primitives.Bool__Array_to_C(*(*[]primitives.CBool)(unsafe.Pointer(&cSlice_gyro_healthy)), m.GyroHealthy[:])
-	cSlice_gyro_priority := mem.gyro_priority[:]
-	primitives.Uint8__Array_to_C(*(*[]primitives.CUint8)(unsafe.Pointer(&cSlice_gyro_priority)), m.GyroPriority[:])
 }
 
 func (t _SensorsStatusImuTypeSupport) AsGoStruct(msg types.Message, ros2_message_buffer unsafe.Pointer) {
@@ -154,8 +144,6 @@ func (t _SensorsStatusImuTypeSupport) AsGoStruct(msg types.Message, ros2_message
 	primitives.Float32__Array_to_Go(m.AccelInconsistencyMSS[:], *(*[]primitives.CFloat32)(unsafe.Pointer(&cSlice_accel_inconsistency_m_s_s)))
 	cSlice_accel_healthy := mem.accel_healthy[:]
 	primitives.Bool__Array_to_Go(m.AccelHealthy[:], *(*[]primitives.CBool)(unsafe.Pointer(&cSlice_accel_healthy)))
-	cSlice_accel_priority := mem.accel_priority[:]
-	primitives.Uint8__Array_to_Go(m.AccelPriority[:], *(*[]primitives.CUint8)(unsafe.Pointer(&cSlice_accel_priority)))
 	m.GyroDeviceIdPrimary = uint32(mem.gyro_device_id_primary)
 	cSlice_gyro_device_ids := mem.gyro_device_ids[:]
 	primitives.Uint32__Array_to_Go(m.GyroDeviceIds[:], *(*[]primitives.CUint32)(unsafe.Pointer(&cSlice_gyro_device_ids)))
@@ -163,8 +151,6 @@ func (t _SensorsStatusImuTypeSupport) AsGoStruct(msg types.Message, ros2_message
 	primitives.Float32__Array_to_Go(m.GyroInconsistencyRadS[:], *(*[]primitives.CFloat32)(unsafe.Pointer(&cSlice_gyro_inconsistency_rad_s)))
 	cSlice_gyro_healthy := mem.gyro_healthy[:]
 	primitives.Bool__Array_to_Go(m.GyroHealthy[:], *(*[]primitives.CBool)(unsafe.Pointer(&cSlice_gyro_healthy)))
-	cSlice_gyro_priority := mem.gyro_priority[:]
-	primitives.Uint8__Array_to_Go(m.GyroPriority[:], *(*[]primitives.CUint8)(unsafe.Pointer(&cSlice_gyro_priority)))
 }
 
 func (t _SensorsStatusImuTypeSupport) TypeSupport() unsafe.Pointer {

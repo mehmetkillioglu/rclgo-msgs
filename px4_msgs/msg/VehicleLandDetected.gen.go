@@ -20,10 +20,10 @@ import (
 	
 )
 /*
-#cgo LDFLAGS: -L/opt/ros/foxy/lib -Wl,-rpath=/opt/ros/foxy/lib -lrcl -lrosidl_runtime_c -lrosidl_typesupport_c -lrcutils -lrmw_implementation
+#cgo LDFLAGS: -L/opt/ros/galactic/lib -Wl,-rpath=/opt/ros/galactic/lib -lrcl -lrosidl_runtime_c -lrosidl_typesupport_c -lrcutils -lrmw_implementation
 #cgo LDFLAGS: -lpx4_msgs__rosidl_typesupport_c -lpx4_msgs__rosidl_generator_c
 
-#cgo CFLAGS: -I/opt/ros/foxy/include
+#cgo CFLAGS: -I/opt/ros/galactic/include
 
 #include <rosidl_runtime_c/message_type_support_struct.h>
 
@@ -46,11 +46,6 @@ type VehicleLandDetected struct {
 	MaybeLanded bool `yaml:"maybe_landed"`// true if the vehicle might have landed (2. stage)
 	Landed bool `yaml:"landed"`// true if vehicle is currently landed on the ground (3. stage)
 	InGroundEffect bool `yaml:"in_ground_effect"`// indicates if from the perspective of the landing detector the vehicle might be in ground effect (baro). This flag will become true if the vehicle is not moving horizontally and is descending (crude assumption that user is landing).
-	InDescend bool `yaml:"in_descend"`
-	HasLowThrottle bool `yaml:"has_low_throttle"`
-	VerticalMovement bool `yaml:"vertical_movement"`
-	HorizontalMovement bool `yaml:"horizontal_movement"`
-	CloseToGroundOrSkippedCheck bool `yaml:"close_to_ground_or_skipped_check"`
 }
 
 // NewVehicleLandDetected creates a new VehicleLandDetected with default values.
@@ -69,11 +64,6 @@ func (t *VehicleLandDetected) Clone() *VehicleLandDetected {
 	c.MaybeLanded = t.MaybeLanded
 	c.Landed = t.Landed
 	c.InGroundEffect = t.InGroundEffect
-	c.InDescend = t.InDescend
-	c.HasLowThrottle = t.HasLowThrottle
-	c.VerticalMovement = t.VerticalMovement
-	c.HorizontalMovement = t.HorizontalMovement
-	c.CloseToGroundOrSkippedCheck = t.CloseToGroundOrSkippedCheck
 	return c
 }
 
@@ -89,11 +79,6 @@ func (t *VehicleLandDetected) SetDefaults() {
 	t.MaybeLanded = false
 	t.Landed = false
 	t.InGroundEffect = false
-	t.InDescend = false
-	t.HasLowThrottle = false
-	t.VerticalMovement = false
-	t.HorizontalMovement = false
-	t.CloseToGroundOrSkippedCheck = false
 }
 
 // CloneVehicleLandDetectedSlice clones src to dst by calling Clone for each element in
@@ -131,11 +116,6 @@ func (t _VehicleLandDetectedTypeSupport) AsCStruct(dst unsafe.Pointer, msg types
 	mem.maybe_landed = C.bool(m.MaybeLanded)
 	mem.landed = C.bool(m.Landed)
 	mem.in_ground_effect = C.bool(m.InGroundEffect)
-	mem.in_descend = C.bool(m.InDescend)
-	mem.has_low_throttle = C.bool(m.HasLowThrottle)
-	mem.vertical_movement = C.bool(m.VerticalMovement)
-	mem.horizontal_movement = C.bool(m.HorizontalMovement)
-	mem.close_to_ground_or_skipped_check = C.bool(m.CloseToGroundOrSkippedCheck)
 }
 
 func (t _VehicleLandDetectedTypeSupport) AsGoStruct(msg types.Message, ros2_message_buffer unsafe.Pointer) {
@@ -148,11 +128,6 @@ func (t _VehicleLandDetectedTypeSupport) AsGoStruct(msg types.Message, ros2_mess
 	m.MaybeLanded = bool(mem.maybe_landed)
 	m.Landed = bool(mem.landed)
 	m.InGroundEffect = bool(mem.in_ground_effect)
-	m.InDescend = bool(mem.in_descend)
-	m.HasLowThrottle = bool(mem.has_low_throttle)
-	m.VerticalMovement = bool(mem.vertical_movement)
-	m.HorizontalMovement = bool(mem.horizontal_movement)
-	m.CloseToGroundOrSkippedCheck = bool(mem.close_to_ground_or_skipped_check)
 }
 
 func (t _VehicleLandDetectedTypeSupport) TypeSupport() unsafe.Pointer {

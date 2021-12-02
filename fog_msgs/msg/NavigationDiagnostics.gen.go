@@ -17,16 +17,16 @@ import (
 
 	"github.com/tiiuae/rclgo/pkg/rclgo/types"
 	"github.com/tiiuae/rclgo/pkg/rclgo/typemap"
-	std_msgs_msg "github.com/mehmetkillioglu/rclgo-msgs/std_msgs/msg"
+	std_msgs_msg "github.com/tiiuae/rclgo-msgs/std_msgs/msg"
 	primitives "github.com/tiiuae/rclgo/pkg/rclgo/primitives"
 	
 )
 /*
-#cgo LDFLAGS: -L/opt/ros/foxy/lib -Wl,-rpath=/opt/ros/foxy/lib -lrcl -lrosidl_runtime_c -lrosidl_typesupport_c -lrcutils -lrmw_implementation
+#cgo LDFLAGS: -L/opt/ros/galactic/lib -Wl,-rpath=/opt/ros/galactic/lib -lrcl -lrosidl_runtime_c -lrosidl_typesupport_c -lrcutils -lrmw_implementation
 #cgo LDFLAGS: -lfog_msgs__rosidl_typesupport_c -lfog_msgs__rosidl_generator_c
 #cgo LDFLAGS: -lstd_msgs__rosidl_typesupport_c -lstd_msgs__rosidl_generator_c
 
-#cgo CFLAGS: -I/opt/ros/foxy/include
+#cgo CFLAGS: -I/opt/ros/galactic/include
 
 #include <rosidl_runtime_c/message_type_support_struct.h>
 
@@ -45,8 +45,6 @@ type NavigationDiagnostics struct {
 	Header std_msgs_msg.Header `yaml:"header"`
 	State string `yaml:"state"`
 	WaypointsInBuffer uint8 `yaml:"waypoints_in_buffer"`
-	CurrentWaypointId uint8 `yaml:"current_waypoint_id"`
-	BumperActive bool `yaml:"bumper_active"`
 	LastNavGoal [3]float64 `yaml:"last_nav_goal"`
 	CurrentNavGoal [3]float64 `yaml:"current_nav_goal"`
 }
@@ -63,8 +61,6 @@ func (t *NavigationDiagnostics) Clone() *NavigationDiagnostics {
 	c.Header = *t.Header.Clone()
 	c.State = t.State
 	c.WaypointsInBuffer = t.WaypointsInBuffer
-	c.CurrentWaypointId = t.CurrentWaypointId
-	c.BumperActive = t.BumperActive
 	c.LastNavGoal = t.LastNavGoal
 	c.CurrentNavGoal = t.CurrentNavGoal
 	return c
@@ -78,8 +74,6 @@ func (t *NavigationDiagnostics) SetDefaults() {
 	t.Header.SetDefaults()
 	t.State = ""
 	t.WaypointsInBuffer = 0
-	t.CurrentWaypointId = 0
-	t.BumperActive = false
 	t.LastNavGoal = [3]float64{}
 	t.CurrentNavGoal = [3]float64{}
 }
@@ -115,8 +109,6 @@ func (t _NavigationDiagnosticsTypeSupport) AsCStruct(dst unsafe.Pointer, msg typ
 	std_msgs_msg.HeaderTypeSupport.AsCStruct(unsafe.Pointer(&mem.header), &m.Header)
 	primitives.StringAsCStruct(unsafe.Pointer(&mem.state), m.State)
 	mem.waypoints_in_buffer = C.uint8_t(m.WaypointsInBuffer)
-	mem.current_waypoint_id = C.uint8_t(m.CurrentWaypointId)
-	mem.bumper_active = C.bool(m.BumperActive)
 	cSlice_last_nav_goal := mem.last_nav_goal[:]
 	primitives.Float64__Array_to_C(*(*[]primitives.CFloat64)(unsafe.Pointer(&cSlice_last_nav_goal)), m.LastNavGoal[:])
 	cSlice_current_nav_goal := mem.current_nav_goal[:]
@@ -129,8 +121,6 @@ func (t _NavigationDiagnosticsTypeSupport) AsGoStruct(msg types.Message, ros2_me
 	std_msgs_msg.HeaderTypeSupport.AsGoStruct(&m.Header, unsafe.Pointer(&mem.header))
 	primitives.StringAsGoStruct(&m.State, unsafe.Pointer(&mem.state))
 	m.WaypointsInBuffer = uint8(mem.waypoints_in_buffer)
-	m.CurrentWaypointId = uint8(mem.current_waypoint_id)
-	m.BumperActive = bool(mem.bumper_active)
 	cSlice_last_nav_goal := mem.last_nav_goal[:]
 	primitives.Float64__Array_to_Go(m.LastNavGoal[:], *(*[]primitives.CFloat64)(unsafe.Pointer(&cSlice_last_nav_goal)))
 	cSlice_current_nav_goal := mem.current_nav_goal[:]
